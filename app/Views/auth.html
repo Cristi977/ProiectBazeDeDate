@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Autentificare | Sistem de producție</title>
+
+    <link rel="stylesheet" href="/css/auth.css">
+    <!--<script src="/js/auth.js" defer></script>-->
+</head>
+
+<body>
+    <main class="auth-page">
+        <section class="auth-card" aria-labelledby="auth-title">
+            <header class="auth-header">
+                <div class="auth-logo" aria-hidden="true">SMP</div>
+
+                <p class="auth-subtitle">Sistem de management al producției</p>
+
+                <h1 id="auth-title">Autentificare</h1>
+
+                <p class="auth-description">
+                    Introdu adresa de e-mail și parola contului tău.
+                </p>
+            </header>
+
+            <div
+                id="auth-error"
+                class="auth-message auth-message--error"
+                role="alert"
+                hidden
+            ></div>
+
+            <form
+                id="auth-form"
+                class="auth-form"
+                action="/api.php"
+                method="post"
+            >
+                <input type="hidden" name="actiune" value="login">
+
+                <div class="form-group">
+                    <label for="email">Adresă de e-mail</label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        placeholder="nume@exemplu.ro"
+                        autocomplete="username"
+                        maxlength="191"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        aria-describedby="email-error"
+                        required
+                    >
+
+                    <small
+                        id="email-error"
+                        class="field-error"
+                        hidden
+                    ></small>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Parolă</label>
+
+                    <div class="password-field">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            placeholder="Introdu parola"
+                            autocomplete="current-password"
+                            aria-describedby="password-error"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            id="toggle-password"
+                            class="password-toggle"
+                            aria-controls="password"
+                            aria-label="Arată parola"
+                            aria-pressed="false"
+                            hidden
+                        >
+                            Arată
+                        </button>
+                    </div>
+
+                    <small
+                        id="password-error"
+                        class="field-error"
+                        hidden
+                    ></small>
+                </div>
+
+                <button
+                    type="submit"
+                    id="login-button"
+                    class="button button--primary"
+                >
+                    Autentificare
+                </button>
+
+                <p
+                    id="auth-status"
+                    class="auth-status"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+            </form>
+
+            <footer class="auth-footer">
+                <p>
+                    Pentru crearea unui cont sau recuperarea accesului,
+                    contactează administratorul sistemului.
+                </p>
+            </footer>
+        </section>
+    </main>
+</body>
+</html>

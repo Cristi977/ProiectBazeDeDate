@@ -1,0 +1,424 @@
+:root {
+    color-scheme: dark;
+
+    --page-bg: #101114;
+    --card-bg: #1a1c21;
+    --input-bg: #111318;
+
+    --text-primary: #f5f6f8;
+    --text-secondary: #b5bac5;
+    --text-placeholder: #858c9b;
+
+    --border: #505765;
+    --border-hover: #737d8e;
+
+    --accent: #ffab66;
+    --accent-hover: #ffbc85;
+    --accent-active: #f39448;
+    --accent-text: #221307;
+
+    --error: #ffb4b4;
+    --error-border: #df8181;
+    --error-bg: #361f25;
+
+    --radius-card: 24px;
+    --radius-control: 12px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: var(--page-bg);
+}
+
+body {
+    min-width: 280px;
+    min-height: 100vh;
+    margin: 0;
+
+    font-family:
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+
+    background:
+        radial-gradient(ellipse at top,
+            rgba(255, 171, 102, 0.08),
+            transparent 60%),
+        var(--page-bg);
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+::selection {
+    color: var(--accent-text);
+    background: var(--accent);
+}
+
+/* Pagina */
+
+.auth-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 32px 20px;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 460px;
+    padding: 36px;
+
+    background: var(--card-bg);
+    border: 1px solid #343943;
+    border-radius: var(--radius-card);
+
+    box-shadow:
+        0 24px 64px rgba(0, 0, 0, 0.28),
+        0 2px 8px rgba(0, 0, 0, 0.16);
+}
+
+/* Antet */
+
+.auth-header {
+    margin-bottom: 28px;
+}
+
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 52px;
+    height: 52px;
+    margin-bottom: 22px;
+
+    color: var(--accent);
+    background: #30261f;
+    border: 1px solid #6b4930;
+    border-radius: 15px;
+
+    font-size: 1.1rem;
+    font-weight: 750;
+    letter-spacing: 0.04em;
+
+    user-select: none;
+}
+
+.auth-subtitle {
+    margin: 0 0 10px;
+
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.auth-header h1 {
+    margin: 0 0 10px;
+
+    font-size: clamp(1.7rem, 5vw, 2rem);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.035em;
+}
+
+.auth-description {
+    margin: 0;
+
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+/* Formular */
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-primary);
+    font-size: 0.925rem;
+    font-weight: 600;
+}
+
+.form-group input:not([type="hidden"]) {
+    display: block;
+
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 15px;
+
+    color: var(--text-primary);
+    caret-color: var(--accent);
+    background: var(--input-bg);
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-control);
+
+    transition:
+        border-color 150ms ease,
+        box-shadow 150ms ease,
+        background-color 150ms ease;
+}
+
+.form-group input::placeholder {
+    color: var(--text-placeholder);
+    opacity: 1;
+}
+
+.form-group input:not(:disabled):hover {
+    border-color: var(--border-hover);
+}
+
+.form-group input:focus {
+    border-color: var(--accent);
+    outline: 3px solid rgba(255, 171, 102, 0.25);
+    outline-offset: 2px;
+}
+
+.form-group input:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.form-group input[aria-invalid="true"] {
+    border-color: var(--error-border);
+}
+
+.form-group input[aria-invalid="true"]:focus {
+    outline-color: rgba(255, 180, 180, 0.3);
+}
+
+/* Parola si butonul de afisare */
+
+.password-field {
+    display: flex;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.password-field input {
+    flex: 1;
+    min-width: 0;
+}
+
+.password-toggle {
+    flex-shrink: 0;
+
+    min-width: 72px;
+    min-height: 52px;
+    padding: 10px 12px;
+
+    color: var(--text-primary);
+    background: #272b33;
+
+    border: 1px solid var(--border);
+    border-radius: var(--radius-control);
+
+    font-size: 0.875rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition:
+        background-color 150ms ease,
+        border-color 150ms ease;
+}
+
+.password-toggle:hover {
+    background: #343943;
+    border-color: var(--border-hover);
+}
+
+.password-toggle[aria-pressed="true"] {
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+/* Actiunea principala */
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    width: 100%;
+    min-height: 52px;
+    padding: 13px 20px;
+
+    border: 1px solid transparent;
+    border-radius: var(--radius-control);
+
+    font-weight: 700;
+    line-height: 1.4;
+    text-align: center;
+
+    cursor: pointer;
+
+    transition:
+        background-color 150ms ease,
+        box-shadow 150ms ease;
+}
+
+.button--primary {
+    color: var(--accent-text);
+    background: var(--accent);
+}
+
+.button--primary:hover:not(:disabled) {
+    background: var(--accent-hover);
+}
+
+.button--primary:active:not(:disabled) {
+    background: var(--accent-active);
+}
+
+.button:disabled {
+    cursor: not-allowed;
+    opacity: 0.65;
+}
+
+.button:focus-visible,
+.password-toggle:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 4px;
+}
+
+/* Mesaje */
+
+.auth-message {
+    margin-bottom: 22px;
+    padding: 13px 15px;
+
+    border: 1px solid;
+    border-radius: var(--radius-control);
+
+    font-size: 0.925rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.auth-message--error {
+    color: var(--error);
+    background: var(--error-bg);
+    border-color: var(--error-border);
+}
+
+.field-error {
+    color: var(--error);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.auth-status {
+    min-height: 1.5em;
+    margin: -10px 0 0;
+
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    text-align: center;
+}
+
+/* Subsol */
+
+.auth-footer {
+    margin-top: 24px;
+    padding-top: 20px;
+
+    border-top: 1px solid #343943;
+}
+
+.auth-footer p {
+    margin: 0;
+
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+/* Completarea automata a browserului */
+
+.form-group input:-webkit-autofill,
+.form-group input:-webkit-autofill:hover,
+.form-group input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text-primary);
+    -webkit-box-shadow: 0 0 0 1000px var(--input-bg) inset;
+    caret-color: var(--accent);
+}
+
+/* Ecrane mici */
+
+@media (max-width: 480px) {
+    .auth-page {
+        padding: 20px 14px;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+        border-radius: 20px;
+    }
+
+    .auth-header {
+        margin-bottom: 24px;
+    }
+
+    .auth-logo {
+        margin-bottom: 18px;
+    }
+}
+
+/* Ferestre joase sau telefon in modul landscape */
+
+@media (max-height: 650px) {
+    .auth-page {
+        align-items: flex-start;
+    }
+}
+
+/* Preferinta pentru animatii reduse */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
