@@ -1,12 +1,19 @@
 <?php
 
-require __DIR__ . '/database.php';
-
 use Illuminate\Database\Capsule\Manager as Capsule;
 
 try {
+    require_once __DIR__ . '/database.php';
+
     Capsule::connection()->getPdo();
-    echo "Connected successfully to: " . Capsule::connection()->getDatabaseName() . PHP_EOL;
-} catch (\Exception $e) {
-    echo "Connection failed: " . $e->getMessage() . PHP_EOL;
+
+    echo "Conectare reusita la: "
+        . Capsule::connection()->getDatabaseName()
+        . PHP_EOL;
+
+    $numarProduse = Capsule::table('produse')->count();
+
+    echo "Numar de produse: " . $numarProduse . PHP_EOL;
+} catch (\Throwable $e) {
+    echo "Eroare: " . $e->getMessage() . PHP_EOL;
 }
